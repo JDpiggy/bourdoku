@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bourdoku</title>
+<link rel="icon" type="image/png" href="bourd.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Fredoka:wght@400;600;800&family=Nunito:wght@400;600;800&family=Comic+Sans+MS&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=22">
+</head>
+<body>
+<div class="wrap">
+  <div class="left-col">
+    <aside class="rules" id="rules">
+      <div class="menu-head">
+        <div class="brand">Bourdoku</div>
+      </div>
+      <div class="menu-status">
+        <div class="level-pill">Level <span id="levelNum">1</span></div>
+        <div class="clock" id="clock">0:00</div>
+      </div>
+      <div class="menu-controls">
+        <button id="btnLevels" class="ghost" title="Select level">🗺️ Levels</button>
+        <button id="btnReset" class="ghost" title="Reset level">↺ Reset</button>
+      </div>
+      <button id="btnHowTo" class="ghost small howto-toggle" title="Toggle how to play">How to play ▼</button>
+      <div id="howtoBody">
+      <h2>How to play <span class="crown">👑</span></h2>
+      <ul>
+        <li>Place <b>one king</b> in every row, column, and colored region.</li>
+        <li>No two kings may <b>touch</b>, even diagonally.</li>
+        <li>Kings on the same diagonal are fine if more than one square apart.</li>
+        <li>Tap a square to cycle: <b>empty → X → king → empty</b>.</li>
+        <li>Right-click to toggle an X note.</li>
+        <li>X marks are just your notes — they never count as kings.</li>
+        <li>Undo / Reset anytime. Conflicting kings glow red.</li>
+      </ul>
+      <p class="tip">Tip: Work out exclusions yourself — auto-elimination is off.</p>
+      <p class="tip" style="font-size:0.7rem;opacity:0.7">Debug: Ctrl+Shift+D shows live state overlay.</p>
+      <button id="btnToggleLabels" class="ghost small" style="margin-top:8px" title="Show region labels">ⓘ Show region labels</button>
+      </div>
+    </aside>
+  </div>
+  <main class="board-area" id="boardArea">
+    <div class="status-text" id="status"></div>
+    <div class="grid-wrap" id="gridWrap"></div>
+  </main>
+</div>
+
+<div id="levels" class="levels" hidden>
+  <div class="levels-card">
+    <h2>Select Level <span class="crown">🗺️</span></h2>
+    <div id="levelGrid" class="level-grid"></div>
+    <div style="margin-top:6px"><div id="levelHint" style="font-size:0.78rem;color:var(--muted);font-family:Nunito,sans-serif;"></div></div>
+    <button id="btnCloseLevels" class="ghost small">Back</button>
+  </div>
+</div>
+
+<div id="completion" class="completion" hidden>
+  <canvas id="confetti"></canvas>
+  <div class="completion-card">
+    <h1 class="celebrate">Level Complete! <span class="crown">🎉</span></h1>
+    <div class="level-badge">Level <b id="compLevel">1</b> beaten</div>
+    <div class="time-line">Time: <b id="compTime">0:00</b></div>
+    <div class="actions">
+      <button id="btnNextLevel" class="big">Start Level <span id="nextLevelNum">2</span></button>
+      <button id="btnPlayAgain" class="outline">Play Again</button>
+      <button id="btnCloseCompletion" class="ghost small">Back to Levels</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js?v=15"></script>
+</body>
+</html>
